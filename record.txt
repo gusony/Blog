@@ -85,3 +85,9 @@ sudo apt-get purge `dpkg -l | grep ^rc | awk '{ print $2 }'`  : 清除清單上�
 ***git remote set-url origin***
 after git clone, don't need to key in username and password everytime when git push
 ex: git remote set-url origin git@github.com:gusony/my_learning_log.git
+
+
+*** git reset ***
+git reset <版本號>:回到某個commit之後的狀態，但檔案還是新的
+git checkt -f ：把檔案恢復到該commit 的狀態
+
