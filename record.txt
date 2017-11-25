@@ -1,4 +1,4 @@
-SSH quick connect: 
+***SSH quick connect:*** 
 1.in ~/.ssh/config
 2.vim ~/.ssh/config
     Host short-name
@@ -8,8 +8,20 @@ SSH quick connect:
 3.in terminal :SSH short-name
 4.connected
 
-SSH keygen:
+***SSH keygen:****
 1.ssh-keygen -t rsa (generate rsa key to ~/.ssh/id_rsa.pub)
 2.1:ssh-copy-id -i .ssh/id_rsa.pub hostname # 推薦V
-2.2:scp id_rsa.pub server_hostname:~/.ssh # (擇一)缺點, 機器沒有.ssh目錄時，會有問題
+(2.2 optional):scp id_rsa.pub server_hostname:~/.ssh # (擇一)缺點, 機器沒有.ssh目錄時，會有問題
 3:finish
+
+***tar***
+1.tar -jcv -f filename.tar.bz2 要被壓縮的檔案或目錄名稱
+2.tar -jxv -f filename.tar.bz2 -C 欲解壓縮的目錄
+
+
+***vim .vimrc theme***
+1:create ~/.vim/colors dir
+2:vim ~/.vimrc 
+    syntax enable
+    colorscheme monokai
+3.finish
