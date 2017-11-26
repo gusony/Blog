@@ -24,4 +24,9 @@
 2:vim ~/.vimrc 
     syntax enable
     colorscheme monokai
-3.finish
+3:finish
+
+***sublime recommand package***
+1.Alignment
+2.SFTP
+3.TrailingSpace
