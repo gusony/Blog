@@ -30,3 +30,21 @@
 1.Alignment
 2.SFTP
 3.TrailingSpace
+
+***gdb usage***
+1. when compile ,add '-g' 
+2. gdb xxxxxxx
+
+(enter gdb)
+l : show the code
+b <line_number> : set breakpoint at a line 
+n : next line ,only one line
+r [argv]: run program, can add parameters you need 
+p <var> : print var
+q : quit
+display <var> : show var ,every 'next line'
+info break,display : can see the breakpoint or display status
+disable /enable break <num> : disable or enable some breakpoint ,no num mean 'all'
+delete break <num> : no longer need the breakpoint ,you can delete ,no num mean 'all' too
+step : like next , but this command will enter the function.
+
