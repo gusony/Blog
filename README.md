@@ -11,7 +11,7 @@ paper list:
 
 相關作品：
 
-1.JH_Box https://github.com/gusony/JH_Box ，科技部大專學生研究計畫的實作細節，實物照片（https://imgur.com/7Plcxj8）
+1.JH_Box https://github.com/gusony/JH_Box ，科技部大專學生研究計畫的實作細節，實物照片（https://imgur.com/7Plcxj8 )
 
 2.NEAT BOX,為JH_Box的前身，使用arduino 為開發板．https://github.com/gusony/CCU_NEAT
 
