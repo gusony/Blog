@@ -58,3 +58,10 @@ change time
 sudo timedatectl set-time "2016-11-12 18:10:40"
 sudo timedatectl set-time "2016-11-12"
 
+
+
+***time***
+time <command> 
+real time 表示後面所接的指令或程式從開始執行到結束終止所需要的時間。
+user CPU time 表示程式在 user mode 所佔用的 CPU 時間總和。多核心的 CPU 或多顆 CPU 計算時，則必須將每一個核心或每一顆 CPU 的時間加總起來。
+system CPU time 表示程式在 kernel mode 所佔用的 CPU 時間總和。
