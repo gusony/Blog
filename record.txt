@@ -82,4 +82,6 @@ dpkg -l | grep ^rc : 列出沒清乾淨的package
 sudo apt-get purge `dpkg -l | grep ^rc | awk '{ print $2 }'`  : 清除清單上的package
 
 
-
+***git remote set-url origin***
+after git clone, don't need to key in username and password everytime when git push
+ex: git remote set-url origin git@github.com:gusony/my_learning_log.git
