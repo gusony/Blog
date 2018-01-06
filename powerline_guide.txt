@@ -1,0 +1,11 @@
+https://goo.gl/XrjT8d
+https://goo.gl/niZaT5
+
+1) sudo apt-get install powerline
+2) vim ~/.bashrc
+   POWERLINE_SCRIPT=/usr/share/powerline/bindings/bash/powerline.sh
+   if [ -f $POWERLINE_SCRIPT ]; then
+     source $POWERLINE_SCRIPT
+   fi
+
+
