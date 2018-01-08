@@ -55,7 +55,7 @@ sudo timedatectl set-ntp no
 sudo timedatectl set-ntp yes
 
 change time
-sudo timedatectl set-time "2016-11-12 18:10:40"
+sudo timedatectl set-time "2018-1-9 18:10:40"
 sudo timedatectl set-time "2016-11-12"
 
 
