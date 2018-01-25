@@ -91,3 +91,6 @@ ex: git remote set-url origin git@github.com:gusony/my_learning_log.git
 git reset <版本號>:回到某個commit之後的狀態，但檔案還是新的
 git checkt -f ：把檔案恢復到該commit 的狀態
 
+*** readme.md中加入超連結 ***
+[填入想要顯示的網址](網址)
+
