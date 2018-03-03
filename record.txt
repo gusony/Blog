@@ -8,11 +8,13 @@
 3.in terminal :SSH short-name
 4.connected
 
+
 ***SSH keygen:****
 1.ssh-keygen -t rsa (generate rsa key to ~/.ssh/id_rsa.pub)
 2.1:ssh-copy-id -i .ssh/id_rsa.pub hostname # 推薦V
 (2.2 optional):scp id_rsa.pub server_hostname:~/.ssh # (擇一)缺點, 機器沒有.ssh目錄時，會有問題
 3:finish
+
 
 ***tar***
 1.tar -jcv -f filename.tar.bz2 要被壓縮的檔案或目錄名稱
@@ -26,10 +28,12 @@
     colorscheme monokai
 3:finish
 
+
 ***sublime recommand package***
 1.Alignment
 2.SFTP
 3.TrailingSpace
+
 
 ***gdb usage***
 1. when compile ,add '-g' 
@@ -59,12 +63,12 @@ sudo timedatectl set-time "2018-1-9 18:10:40"
 sudo timedatectl set-time "2018-02-04"
 
 
-
 ***time***
 time <command> 
 real time 表示後面所接的指令或程式從開始執行到結束終止所需要的時間。
 user CPU time 表示程式在 user mode 所佔用的 CPU 時間總和。多核心的 CPU 或多顆 CPU 計算時，則必須將每一個核心或每一顆 CPU 的時間加總起來。
 system CPU time 表示程式在 kernel mode 所佔用的 CPU 時間總和。
+
 
 *** iperf3 ***
 server端: iperf3 -s
@@ -74,6 +78,7 @@ client example : iperf –c 192.168.0.1 –w 100M –t 120 –i 10
 -w 測試檔案的大小
 -t 測試多久
 -i 每隔幾秒顯示一次
+
 
 *** apt-get remove ***
 sudo apt-get purge texlive-full <package name> or sudo apt-get autoremove --purge
@@ -94,3 +99,13 @@ git checkt -f ：把檔案恢復到該commit 的狀態
 *** readme.md中加入超連結 ***
 [填入想要顯示的網址](網址)
 
+
+**** homebrew ***
+brew install [Formula]
+brew uninstall [Formula]
+brew update       (like apt-get update)
+brew upgrade      (like apt-get upgrade)
+brew doctor       (check the brew system)
+brew cleanup      (clean garbage)
+brew info [Formula]
+brew list        
