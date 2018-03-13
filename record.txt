@@ -110,3 +110,9 @@ brew doctor       (check the brew system)
 brew cleanup      (clean garbage)
 brew info [Formula]
 brew list        
+
+*** nohup ***
+nohup 指令可以在系統登出後繼續執行
+通常指令最後會在一個‘＆’ 在背景執行
+nohup your_command & //會自動把結果輸出到nohup.txt
+nohup your_command &>myout.txt &  //可以把結果導到myout.txt
