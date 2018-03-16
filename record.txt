@@ -1,3 +1,13 @@
+***change time*** 
+open/close auto time
+sudo timedatectl set-ntp no
+sudo timedatectl set-ntp yes
+
+change time
+sudo timedatectl set-time "2018-1-9 18:10:40"
+sudo timedatectl set-time "2018-02-04"
+
+
 ***SSH quick connect:*** 
 1.in ~/.ssh/config
 2.vim ~/.ssh/config
@@ -51,16 +61,6 @@ info break,display : can see the breakpoint or display status
 disable /enable break <num> : disable or enable some breakpoint ,no num mean 'all'
 delete break <num> : no longer need the breakpoint ,you can delete ,no num mean 'all' too
 step : like next , but this command will enter the function.
-
-
-***change time*** 
-open/close auto time
-sudo timedatectl set-ntp no
-sudo timedatectl set-ntp yes
-
-change time
-sudo timedatectl set-time "2018-1-9 18:10:40"
-sudo timedatectl set-time "2018-02-04"
 
 
 ***time***
