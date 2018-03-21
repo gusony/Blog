@@ -1,0 +1,4 @@
+1. if the sd card is larger than 32GB, use 'FAT32format' to format it.
+The SD card must be the 'FAT32' format that can be using in raspberry pi.
+
+2. use "Etcher" coping the image file into SD card
