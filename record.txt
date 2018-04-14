@@ -118,4 +118,30 @@ nohup your_command & //會自動把結果輸出到nohup.txt
 nohup your_command &>myout.txt &  //可以把結果導到myout.txt
 
 *** linux serial port ***
-dmesg | grep tty 
+dmesg | grep tty
+
+*** tmux ***
+tmux server > session > windows > pane
+下面狀態列的[x] 是第x個session
+[]右側的是window
+
+pane
+%	:水平分割
+"	:垂直分割
+方向鍵	:移動pane
+x	:關閉目前pane
+
+window	
+c	:new window
+&	:close current window
+p	:last window
+n	:next windwo
+
+session
+tmux	:new session
+tmux ls	:list all session
+d	:exit tmux temporarily
+s	:switch session
+tmux attach -t 0	:enter 0 session
+tmux kill-session -t 0 	:close 0 session
+
