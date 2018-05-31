@@ -146,3 +146,21 @@ s	:switch session
 tmux attach -t 0	:enter 0 session
 tmux kill-session -t 0 	:close 0 session
 
+*** screen ***
+screen -參數
+-L ：開啟自動記錄功能
+-ls :列出所有執行中的screen環境
+-r  : 重新連接執行中的screen環境
+-wipe:將廢棄的screen環境清除
+
+操作指令 Ctrl+a
+c : create new screen window
+n : next screen window
+p : previous screen window
+# : 0~9的數字 直接跳到該window
+k : close current window
+w : list all window
+d : exit screen
+S : 分隔成上下畫面
+Q : 關閉分割畫面
+Tab:切換分割畫面
