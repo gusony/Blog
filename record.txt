@@ -86,6 +86,11 @@ sudo apt-get purge texlive-full <package name> or sudo apt-get autoremove --purg
 dpkg -l | grep ^rc : 列出沒清乾淨的package
 sudo apt-get purge `dpkg -l | grep ^rc | awk '{ print $2 }'`  : 清除清單上的package
 
+有時候沒辦法update的時候
+sudo apt-get dist-upgrade
+sudo apt-get update
+sudo apt-get upgrade
+
 
 ***git remote set-url origin***
 after git clone, don't need to key in username and password everytime when git push
