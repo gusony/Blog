@@ -92,6 +92,11 @@ sudo apt-get update
 sudo apt-get upgrade
 
 
+***git, push an existing repository from the command line***
+git remote add origin <url>
+git push -u origin master
+
+
 ***git remote set-url origin***
 after git clone, don't need to key in username and password everytime when git push
 ex: git remote set-url origin git@github.com:gusony/my_learning_log.git
