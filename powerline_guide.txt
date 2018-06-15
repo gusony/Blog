@@ -1,3 +1,5 @@
+
+---for ubuntu---
 https://goo.gl/XrjT8d
 https://goo.gl/niZaT5
 
@@ -8,4 +10,23 @@ https://goo.gl/niZaT5
      source $POWERLINE_SCRIPT
    fi
 
+
+
+--- for mac ---
+1) (option)install Homebrew 
+	/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+2) (optine)install pip
+	brew install pip
+3) (sudo)pip install powerline-shell
+4) vim ~/.bash_profile ,and add word below
+////////////////////////////////////////////////////////////////////////
+function _update_ps1() {
+    PS1=$(powerline-shell $?)
+}
+
+if [[ $TERM != linux && ! $PROMPT_COMMAND =~ _update_ps1 ]]; then
+    PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
+fi
+///////////////////////////////////////////////////////////////////////
+5) finished!
 
