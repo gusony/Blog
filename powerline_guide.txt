@@ -19,14 +19,28 @@ https://goo.gl/niZaT5
 	brew install pip
 3) (sudo)pip install powerline-shell
 4) vim ~/.bash_profile ,and add word below
-////////////////////////////////////////////////////////////////////////
-function _update_ps1() {
-    PS1=$(powerline-shell $?)
-}
+	function _update_ps1() {
+	    PS1=$(powerline-shell $?)
+	}
 
-if [[ $TERM != linux && ! $PROMPT_COMMAND =~ _update_ps1 ]]; then
-    PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
-fi
-///////////////////////////////////////////////////////////////////////
+	if [[ $TERM != linux && ! $PROMPT_COMMAND =~ _update_ps1 ]]; then
+	    PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
+	fi
 5) finished!
 
+
+--- for mac (way2) ---
+1) git clone https://github.com/milkbikis/powerline-shell
+2) cd powerline-shell
+3) (sudo) ./install.py
+4) vim ~/.bash_profile, and add word below
+	function _update_ps1() {
+	    PS1="$(~/dev/tools/powerline-shell/powerline-shell.py $? 2> /dev/null)"
+	}
+	if [ "$TERM" != "linux" ]; then
+	    PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
+	fi
+
+--- font ---
+1) git clone https://github.com/powerline/fonts
+2) sudo ./install.sh
