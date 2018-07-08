@@ -32,19 +32,24 @@ sudo timedatectl set-time "2018-02-04"
 2.tar -jxv -f filename.tar.bz2 -C 欲解壓縮的目錄
 
 
-***vim .vimrc theme***
-1:create ~/.vim/colors dir
-2:vim ~/.vimrc
+*** vim .vimrc theme***
+0. download theme from my github
+1. mkdir ~/.vim/colors
+2. vim ~/.vimrc
     syntax enable
     colorscheme monokai
 3:finish
 
 
 ***sublime recommand package***
-1.Alignment
+1.Alignment //自動註解
 2.SFTP // 遠端ftp
-
 3.TrailingSpace
+    /* (Preferences > Package Settings > Trailing Spaces > Settings - User)
+     * {
+     *       "trailing_spaces_trim_on_save": true
+     * }
+     */
 
 
 ***gdb usage***
