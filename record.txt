@@ -44,7 +44,7 @@ sudo timedatectl set-time "2018-02-04"
 ***sublime recommand package***
 1.Alignment //自動註解
 2.SFTP // 遠端ftp
-3.TrailingSpace
+3.TrailingSpace  // 儲存時順便清除多餘空白
     /* (Preferences > Package Settings > Trailing Spaces > Settings - User)
      * {
      *       "trailing_spaces_trim_on_save": true
@@ -52,7 +52,7 @@ sudo timedatectl set-time "2018-02-04"
      */
 
 
-***gdb usage***
+*** gdb usage ***
 1. when compile ,add '-g'
 2. gdb xxxxxxx
 
@@ -70,7 +70,7 @@ delete break <num> : no longer need the breakpoint ,you can delete ,no num mean 
 step : like next , but this command will enter the function.
 
 
-***time***
+*** time ***
 time <command>
 real time 表示後面所接的指令或程式從開始執行到結束終止所需要的時間。
 user CPU time 表示程式在 user mode 所佔用的 CPU 時間總和。多核心的 CPU 或多顆 CPU 計算時，則必須將每一個核心或每一顆 CPU 的時間加總起來。
@@ -99,12 +99,12 @@ sudo apt-get update
 sudo apt-get upgrade
 
 
-***git, push an existing repository from the command line***
+*** git, push an existing repository from the command line ***
 git remote add origin <url>
 git push -u origin master
 
 
-***git remote set-url origin***
+*** git remote set-url origin ***
 after git clone, don't need to key in username and password everytime when git push
 ex: git remote set-url origin git@github.com:gusony/my_learning_log.git
 
