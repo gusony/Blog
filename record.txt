@@ -31,6 +31,9 @@ sudo timedatectl set-time "2018-02-04"
 1.tar -jcv -f filename.tar.bz2 要被壓縮的檔案或目錄名稱
 2.tar -jxv -f filename.tar.bz2 -C 欲解壓縮的目錄
 
+zip -r filename.zip folder/
+unzip filename.zip
+
 
 *** vim .vimrc theme***
 0. download theme from my github
