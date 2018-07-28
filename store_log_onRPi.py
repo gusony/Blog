@@ -20,7 +20,7 @@ if __name__ == '__main__':
 
             a = val.rstrip().rstrip('\n')
             print  str(datetime.datetime.now())+","+ a
-            f1.write( str(datetime.datetime.now())+","+ a)
+            f1.write( str(datetime.datetime.now())+","+ a+"\n")
 
         f1.close()
         t_start = datetime.datetime.now()

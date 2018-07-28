@@ -1,0 +1,9 @@
+[datetime]
+>>> datetime.datetime.now()
+datetime.datetime(2018, 8, 6, 17, 29, 58, 796043)
+
+* time_object to str
+time_str = time_object.strftime('%Y-%m-%d %H:%M:%S.%f') # can use other format
+
+* str to time_object
+datetime_object = datetime.strptime(time_String,'%Y-%m-%d %H:%M:%S.%f'); # can use other format
