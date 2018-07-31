@@ -10,7 +10,6 @@ datetime.date
 以下縮寫
 datetime_object = datetime.datetime
 
-
 >>> datetime.datetime.now()
 datetime.datetime(2018, 8, 6, 17, 29, 58, 796043)
 
@@ -21,7 +20,7 @@ time_str = datetime_object.strftime('%Y-%m-%d %H:%M:%S.%f') # can use other form
 datetime_object = datetime.strptime(time_String,'%Y-%m-%d %H:%M:%S.%f'); # can use other format
 
 
-
+---------------------------------------------------------------------------------------------------
 [String處理]
 str.rstrip()  #去除字尾多餘空白,也可以刪除其它字元
 >>> "123456777   ".rstrip()
