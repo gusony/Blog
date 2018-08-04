@@ -17,7 +17,7 @@ datetime.datetime(2018, 8, 6, 17, 29, 58, 796043)
 time_str = datetime_object.strftime('%Y-%m-%d %H:%M:%S.%f') # can use other format
 
 * str to time_object
-datetime_object = datetime.strptime(time_String,'%Y-%m-%d %H:%M:%S.%f'); # can use other format
+datetime_object = datetime.datetime.datetime.datetime.datetime.datetime.datetime.datetime.datetime.datetime.strptime(time_String,'%Y-%m-%d %H:%M:%S.%f'); # can use other format
 
 
 ---------------------------------------------------------------------------------------------------
