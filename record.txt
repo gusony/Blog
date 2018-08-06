@@ -10,12 +10,12 @@ sudo timedatectl set-time "2018-02-04"
 
 *** SSH quick connect ***
 /* setup */
-1. cd  ~/.ssh/config
-2. vim ~/.ssh/config
+vim ~/.ssh/config
     Host short-name
     HostName domain-name
     User username
     Port 22
+
 /* How to use? */
 (in terminal)SSH <short-name>
 
