@@ -1,0 +1,39 @@
+reset
+input_file_name =  "esp_ethernet_v2_percent.txt"
+output_file_name = "ESP12F,198,ethernet,1000筆.eps"
+plot_name =        "ESP12F (198,ethernet,1000)"
+theta = 0.024640715
+k = 617.1898723
+
+
+set term postscript enhanced "Times-Roman" 18   color
+set output output_file_name
+set xlabel "Latency (ms)"
+set ylabel "Frequency" #offset graph 0.0,0.0 #Y軸標題的座標
+set xtics font ", 20"
+set style data histograms
+set boxwidth 1
+set style histogram cluster gap 0
+set style fill solid 1.0 border -1
+set title plot_name
+#set key left
+#set key font ",35"
+#set key spacing 10
+set key center at 60,0.12 #圖示所在位置
+
+
+# Ln f(x; k, theta)
+# Commonly, we denote a = alpha = k and b = beta = 1/theta.
+ln_f(x, a, b) = a*log(b) - lgamma(a) + (a-1)*log(x) - b*x
+
+# f(x; k, theta)
+f(x, k, theta) = (x<0)? 0 : (x==0)? ((k<1)? 1/0 : (k==1)? theta : 0)\
+ : (theta==0)? 0 : exp(ln_f(x, k, 1.0/theta))
+
+plot [0:100] [0:1]  input_file_name  using 2 lc rgb "black"  lt 0 lw 0  title 'V2(140.113.199.198)' ,\
+ f(x,k, theta) t sprintf("k = %.3f, {/Symbol q} = %.3f",k,theta) lw 2 lc rgb "red"
+
+
+
+
+
