@@ -7,19 +7,19 @@ k = 617.1898723
 
 
 set term postscript enhanced "Times-Roman" 18   color
-set output output_file_name
-set xlabel "Latency (ms)"
-set ylabel "Frequency" #offset graph 0.0,0.0 #Y軸標題的座標
+set output output_file_name                  #設定輸出檔案名稱
+set xlabel "Latency (ms)"                    #X軸標題
+set ylabel "Frequency" #offset graph 0.0,0.0 #Y軸標題
 set xtics font ", 20"
 set style data histograms
 set boxwidth 1
 set style histogram cluster gap 0
 set style fill solid 1.0 border -1
-set title plot_name
+set title plot_name                          #標題名稱
 #set key left
 #set key font ",35"
 #set key spacing 10
-set key center at 60,0.12 #圖示所在位置
+set key center at 60,0.12                    #圖示所在位置
 
 
 # Ln f(x; k, theta)
@@ -35,5 +35,5 @@ plot [0:100] [0:1]  input_file_name  using 2 lc rgb "black"  lt 0 lw 0  title 'V
 
 
 
-
-
+#rgb顏色也可以用 #0ABAB5 這樣表示
+#rgb "#0ABAB5"
