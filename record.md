@@ -111,9 +111,9 @@ iperf –c 192.168.0.1 –w 100M –t 120 –i 10
 ```
 
 ## apt-get remove
-```sudo apt-get purge texlive-full <package name>``` or ```sudo apt-get autoremove --purge```
-```dpkg -l | grep ^rc``` : 列出沒清乾淨的package
-```sudo apt-get purge `dpkg -l | grep ^rc | awk '{ print $2 }'` ``` : 清除清單上的package
+* ```sudo apt-get purge texlive-full <package name>``` or ```sudo apt-get autoremove --purge```  
+* ```dpkg -l | grep ^rc``` : 列出沒清乾淨的package  
+* ```sudo apt-get purge `dpkg -l | grep ^rc | awk '{ print $2 }'` ``` : 清除清單上的package  
 
 有時候沒辦法update的時候
 ```
