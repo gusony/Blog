@@ -71,7 +71,8 @@ unzip filename.zip
     { "keys": ["shift+end"], "command": "move_to", "args": {"to": "eol", "extend": true} },
     { "keys": ["shift+home"], "command": "move_to", "args": {"to": "bol", "extend": true } }
     ```
-
+* Auto Refresh
+* Compare Side-By-Side
 
 ## gdb usage
 1. when going to compile ,add '-g'
