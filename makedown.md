@@ -60,12 +60,13 @@ ___
 這樣 ```[program language] 即表示這段文字是哪種語言
 可以套用該語言的Highlight
 ```python
+#  ```python
 #python
 import datetime
 time = datetime.datetime.now()
 ```
 ```C
-//C
+// ```C
 unsigned int val = 0xff;
 ```
 
