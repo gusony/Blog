@@ -46,4 +46,5 @@ set volume with output muted
 2 勾選需要的服務&設定想要的快速鍵
 ![Alt text](/automator_media/3.png)
 
-
+[more detail](https://dougscripts.com/itunes/itinfo/info03.php)
+Thank!
