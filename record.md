@@ -33,6 +33,9 @@ you can copy the id_rsa.pub(content) to target server you want to login without 
 ex: github -> setting -> SSH and GPG keys -> NEW SSH key -> paste your key -> done!
 you don't need to keyin password when git clone,push,pull or ssh login.
 
+Warning: Remote Host Identification Has changed
+=> ssh-keyget -R <ip or url>
+
 ## tar
 ```
 tar -jcv -f filename.tar.bz2    # zip 要被壓縮的檔案或目錄名稱
@@ -211,3 +214,10 @@ Q : 關閉分割畫面
 Tab:切換分割畫面
 A : rename window's name
 ```
+
+
+## ubuntu exfat
+```
+sudo apt-get install exfat-utils exfat-fuse
+```
+
