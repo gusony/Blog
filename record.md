@@ -221,3 +221,9 @@ A : rename window's name
 sudo apt-get install exfat-utils exfat-fuse
 ```
 
+## venv python3
+```
+python3 -m vemv myvenv #create myvenv dir
+source myvenv/bin/activate #activate myvenv
+```
+
