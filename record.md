@@ -225,5 +225,11 @@ sudo apt-get install exfat-utils exfat-fuse
 ```
 python3 -m vemv myvenv #create myvenv dir
 source myvenv/bin/activate #activate myvenv
+
+#auto activate venv when ssh login
+#.bashrc or .bash-profile
+soruce /path/to/venv/bin/activate
+
+
 ```
 
