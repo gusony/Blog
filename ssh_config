@@ -1,0 +1,19 @@
+Host abeing
+Hostname 140.113.215.7
+User junhan
+Port 22
+
+Host rpi
+Hostname 140.113.215.26
+User junhan
+Port 8877
+
+Host pcs
+Hostname pcs.cs.nctu.edu.tw
+User junhan
+HostKeyAlgorithms=+ssh-dss
+
+Host vol
+Hostname 192.168.1.141
+User volumio
+
