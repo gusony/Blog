@@ -59,6 +59,7 @@ unzip filename.zip
 #### sublime recommand plugins
 * Alignment //自動註解
 * SFTP // 遠端ftp
+* GreekLetters // 可以打希臘字母
 * TrailingSpace  // 儲存時順便清除多餘空白
     ```
     # (Preferences > Package Settings > Trailing Spaces > Settings - User)
