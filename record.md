@@ -56,17 +56,38 @@ unzip filename.zip
     colorscheme monokai
 3:finish
 
+#### vim tab
+
+#### vim 分隔
+C-w : hot key
+切換分隔視窗
+```
+<Hot key> k  或  <Hot key> ↑
+<Hot key> j  或  <Hot key> ↓
+<Hot key> h  或  <Hot key> ←
+<Hot key> l  或  <Hot key> →
+```
+同樣的檔案 分割視窗
+```
+<HK> S 或 :new   #水平切割
+<HK> V 或 :vnew  #垂直切割
+```
+開啟其他檔案 分割視窗
+```
+:sp file_name   #開啟檔案 水平分割
+:vsp file_name  #開啟檔案 垂直分割
+```
 #### sublime recommand plugins
 * Alignment //自動註解
 * SFTP // 遠端ftp
 * GreekLetters // 可以打希臘字母
 * TrailingSpace  // 儲存時順便清除多餘空白
-    ```
+```
     # (Preferences > Package Settings > Trailing Spaces > Settings - User)
     {
         "trailing_spaces_trim_on_save": true #儲存時清除
     }
-    ```
+````
 * macbook 外接鍵盤 Home/End 回到句首句尾
 ```Preferences > Key Bindings - User```
     ```
