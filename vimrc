@@ -1,8 +1,11 @@
-"colorscheme location:~/.vim/colors/
+"colorscheme location : ~/.vim/colors/
 syntax enable
 colorscheme monokai
 
-:set nu
+set nu
 set backspace=indent,eol,start
 set laststatus=2
 set t_Co=256
+set ruler
+set expandtab
+set tabstop=4
