@@ -1,0 +1,21 @@
+{
+  "segments": [
+    "ssh",
+    "hostname",
+    "cwd",
+    "newline",
+    "virtual_env",
+    "git",
+    "hg",
+    "jobs",
+    "root"
+  ],
+  "cwd": {
+    "max_depth":4,
+    "max_dir_size":40
+  },
+  "time":{
+    "format":"%H:%M:%S"
+  },
+  "theme":"~/.config/powerline-shell/mytheme.py"
+}
