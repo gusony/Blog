@@ -1,10 +1,11 @@
+# ~/.gitconfig
 [user]
     email = junhan@g2.nctu.edu.tw
     name = Junhan
 [alias]
     d = difftool
     a = add
-    ci = commit -v
+    ci = commit -v -m
     co = checkout
     cp = cherry-pick
     df = diff
