@@ -3,11 +3,6 @@ Hostname 140.113.215.7
 User junhan
 Port 22
 
-Host rpi
-Hostname 140.113.215.26
-User junhan
-Port 8877
-
 Host pcs
 Hostname pcs.cs.nctu.edu.tw
 User junhan
@@ -16,4 +11,26 @@ HostKeyAlgorithms=+ssh-dss
 Host vol
 Hostname 192.168.1.141
 User volumio
+
+Host 219
+Hostname 140.113.199.219
+User iottalk
+
+Host 222
+Hostname 140.113.199.222
+User iottalk
+
+
+Host 181
+Hostname 140.113.199.181
+User iottalk
+
+HOST yun
+Hostname 192.168.1.102
+User root
+
+HOST 2
+Hostname 140.113.215.2
+Port 3322
+User junhan
 
