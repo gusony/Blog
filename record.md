@@ -137,15 +137,22 @@ iperf –c 192.168.0.1 –w 100M –t 120 –i 10
 ```
 
 ## apt-get remove
-* ```sudo apt-get purge texlive-full <package name>``` or ```sudo apt-get autoremove --purge```  
+* ```sudo apt purge texlive-full <package name>``` or ```sudo apt autoremove --purge```  
 * ```dpkg -l | grep ^rc``` : 列出沒清乾淨的package  
-* ```sudo apt-get purge `dpkg -l | grep ^rc | awk '{ print $2 }'` ``` : 清除清單上的package  
+* ```sudo apt purge `dpkg -l | grep ^rc | awk '{ print $2 }'` ``` : 清除清單上的package  
 
 有時候沒辦法update的時候
 ```
-sudo apt-get dist-upgrade
-sudo apt-get update
-sudo apt-get upgrade
+sudo apt dist-upgrade
+sudo apt update
+sudo apt upgrade
+```
+
+### apt 錯誤處理例子
+>>> updating from such a repository can't be done securely and is therefore disabled by default
+```sudo apt update --allow-unauthenticated```
+
+
 ```
 ## git
 #### git, push an existing repository from the command line
