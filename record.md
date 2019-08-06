@@ -149,7 +149,7 @@ sudo apt upgrade
 ```
 
 ### apt 錯誤處理例子
->>> updating from such a repository can't be done securely and is therefore disabled by default
+> updating from such a repository can't be done securely and is therefore disabled by default
 ```sudo apt update --allow-unauthenticated```
 
 
