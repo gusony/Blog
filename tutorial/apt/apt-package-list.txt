@@ -3,3 +3,4 @@ xrdp
 python3-pip
 python3-venv
 htop
+openssh-server
