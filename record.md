@@ -26,7 +26,7 @@ Port 22
 ## SSH keygen
 ```
 ssh-keygen -t rsa                                 # generate rsa publish key to ~/.ssh/id_rsa.pub
-ssh-copy-id -i .ssh/id_rsa.pub hostname           # recommend
+ssh-copy-id -i ~/.ssh/id_rsa.pub hostname         # recommend
 (optional) scp id_rsa.pub server_hostname:~/.ssh  # (擇一)缺點, 機器沒有.ssh目錄時，會有問題
 (optional) ssh-keygen -R <ip or url>              # Warning: Remote Host Identification Has changed
 
