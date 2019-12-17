@@ -5,3 +5,4 @@ python3-venv
 htop
 openssh-server
 vim
+nmap
