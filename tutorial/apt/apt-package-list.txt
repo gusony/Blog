@@ -6,3 +6,4 @@ htop
 openssh-server
 vim
 nmap
+rclone
