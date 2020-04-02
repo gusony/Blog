@@ -7,3 +7,4 @@ openssh-server
 vim
 nmap
 rclone
+iperf3 
