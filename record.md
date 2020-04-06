@@ -269,7 +269,4 @@ soruce /path/to/venv/bin/activate
 ```
 
 
-## Ubuntu exfat
-```
-sudo apt-get install exfat-utils exfat-fuse
-```
+end
