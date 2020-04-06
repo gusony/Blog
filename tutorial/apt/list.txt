@@ -8,3 +8,14 @@ vim
 nmap
 rclone
 iperf3 
+exfat-utils
+exfat-fuse
+xfce4
+xrdp
+xfce4-goodies
+xorg
+dbus-x11
+x11-xerver-utils
+deluged
+deluge-web
+zsh
