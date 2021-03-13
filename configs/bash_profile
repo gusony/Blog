@@ -1,23 +1,44 @@
+case "$BASH_EXECUTION_STRING" in
+
+        *ctris*) TERM=xterm;;
+    *ninvaders*) TERM=xterm;;
+              *) TERM=xterm-256color;;
+esac
+
+export TERM
+
+
 source ~/myvenv/bin/activate
 alias g="git"
 alias p3='python3'
 alias ll='ls -al'
 alias ls='ls --color=auto'
 alias p2='python2'
-function _update_ps1() {
-    PS1=$(powerline-shell $?)
+alias gp='grep -irn'
+alias fd='fd . -iname '
+
+function parse_git_branch {
+    git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
 }
 
-if [[ $TERM != linux && ! $PROMPT_COMMAND =~ _update_ps1 ]]; then
-    PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
-fi
-
-export CLICOLOR='true'
-export LSCOLORS="GxFxCxDxBxegedabagaced"
 
 # TMUX
 if which tmux >/dev/null 2>&1; then
     #if not inside a tmux session, and if no session is started, start a new session
     test -z "$TMUX" && (tmux attach || tmux new-session)
 fi
+
+#if [[ $TERM != linux && ! $PROMPT_COMMAND =~ _update_ps1 ]]; then
+#    PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
+#fi
+
+POWERLINE_SCRIPT=/usr/share/powerline/bindings/bash/powerline.sh
+if [ -f $POWERLINE_SCRIPT ]; then
+  source $POWERLINE_SCRIPT
+fi
+
+
+export CLICOLOR='true'
+export LSCOLORS="GxFxCxDxBxegedabagaced"
+
 
