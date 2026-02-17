@@ -1,0 +1,72 @@
+# 常用工具清單 - 可自行增減
+# 格式：每行一個套件名稱（apt 與 brew 多數同名，腳本會自動處理差異）
+# 以 # 開頭為註解，空行會略過
+#
+# === 必備 ===
+git
+vim
+tmux
+zsh
+openssh-client
+# macOS 用 openssh，brew 安裝會更新版本
+
+# === 網路工具 ===
+net-tools
+iperf3
+nmap
+curl
+wget
+
+# === 系統監控與效能 ===
+htop
+tree
+baobab
+# baobab: 磁碟使用量分析器 (GNOME)
+
+# === 遠端與 VPN ===
+tailscale
+openssh-server
+# openssh-server: 本機 SSH 服務端，僅 Linux；macOS 內建
+
+# === 開發工具 ===
+python3
+python3-pip
+python3-venv
+# macOS: python3 透過 brew install python；pip/venv 已含
+# Linux: 需分別安裝，deploy 腳本會一併處理
+
+# === 檔案系統 ===
+exfat-utils
+exfat-fuse
+# exFAT 支援，外接硬碟常用；macOS 內建 exFAT
+
+# === 桌面環境 (Linux 選用) ===
+xfce4
+xfce4-goodies
+xorg
+dbus-x11
+x11-xserver-utils
+xrdp
+# 以上為 Linux/apt 專用，macOS 會略過
+
+# === BT 下載 ===
+deluged
+deluge-web
+# deluge: Linux 用 apt；macOS 用 brew install deluge（含 daemon 與 GUI）
+
+# === 進階編輯器 (選用) ===
+# neovim
+
+# === 其他實用工具 ===
+rsync
+rclone
+jq
+fzf
+ripgrep
+# ripgrep: apt 為 ripgrep, brew 為 ripgrep
+fd-find
+# fd: apt 為 fd-find (指令 fd), brew 為 fd
+
+# === Zsh 擴充 (需手動或透過 deploy 腳本安裝) ===
+# oh-my-zsh: 需執行 install script
+# powerlevel10k: 需透過 git clone 到 oh-my-zsh 主題目錄

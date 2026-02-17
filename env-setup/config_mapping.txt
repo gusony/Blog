@@ -1,0 +1,17 @@
+# 設定檔備份對應表
+# 格式: 來源路徑|目標路徑(相對於 repo 根目錄)
+# 來源支援 ~ 會展開為 $HOME
+#
+# 備份時：從來源複製到 repo 的 configs/
+# 部署時：從 repo 的 configs/ 複製到來源路徑
+#
+~/.ssh/config|configs/ssh_config
+~/.vimrc|configs/vimrc
+~/.tmux.conf|configs/tmux.conf
+~/.bash_profile|configs/bash_profile
+~/.bashrc|configs/bashrc
+~/.zshrc|configs/zshrc
+~/.zshenv|configs/zshenv
+~/.gitconfig|configs/gitconfig
+~/.p10k.zsh|configs/p10k.zsh
+~/.config/powerline|configs/powerline

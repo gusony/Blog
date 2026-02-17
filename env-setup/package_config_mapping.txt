@@ -1,0 +1,16 @@
+# 套件與設定檔路徑對應表
+# 格式: 套件名稱|設定檔路徑1,路徑2,...
+# 以 # 開頭為註解
+#
+# 套件名稱需與 tools.txt 一致（或對應的 apt/brew 名稱）
+#
+git|~/.gitconfig
+vim|~/.vimrc
+tmux|~/.tmux.conf
+zsh|~/.zshrc,~/.zshenv
+openssh-client|~/.ssh/config
+openssh|~/.ssh/config
+bash|~/.bash_profile,~/.bashrc
+powerlevel10k|~/.p10k.zsh
+powerline|~/.config/powerline
+neovim|~/.config/nvim/init.vim,~/.config/nvim/init.lua

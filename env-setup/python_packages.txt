@@ -1,0 +1,43 @@
+# Python 常用套件清單 - 可自行增減
+# 格式：每行一個套件名稱，可用 == 指定版本，例如: requests==2.28.0
+# 以 # 開頭為註解，空行會略過
+#
+# 安裝方式: pip install -r python_packages.txt
+#
+# === 資料處理 ===
+numpy
+pandas
+scipy
+
+# === 網路與 API ===
+requests
+urllib3
+
+# === 開發工具 ===
+ipython
+jupyter
+jupyterlab
+black
+flake8
+pylint
+mypy
+pytest
+
+# === 環境與套件管理 ===
+virtualenv
+pip-tools
+
+# === 系統與自動化 ===
+python-dotenv
+pyyaml
+toml
+
+# === 資料庫 ===
+# sqlalchemy
+# psycopg2-binary
+
+# === 其他實用 ===
+rich
+tqdm
+click
+# powerline-status  # 若使用 powerline 狀態列

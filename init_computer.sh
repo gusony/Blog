@@ -1,5 +1,5 @@
 echo "[apt] install start"
-./tutorial/apt/install_apt.sh
+./env-setup/install_apt.sh
 
 echo "[p3 venv]"
 python3 -m venv ~/myvenv
