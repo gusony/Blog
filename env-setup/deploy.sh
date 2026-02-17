@@ -75,7 +75,7 @@ get_package_name() {
             [[ "$pm" == "brew" ]] && echo "" || echo "$pkg"
             ;;
         # Linux 專用，macOS 略過
-        xfce4|xfce4-goodies|xorg|dbus-x11|x11-xserver-utils|xrdp|exfat-utils|exfat-fuse)
+        xfce4|xfce4-goodies|xorg|dbus-x11|x11-xserver-utils|xrdp|exfat-utils|exfat-fuse|fpart|sshfs)
             [[ "$pm" == "brew" ]] && echo "" || echo "$pkg"
             ;;
         deluged)

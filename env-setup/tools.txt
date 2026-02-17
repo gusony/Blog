@@ -59,6 +59,10 @@ deluge-web
 
 # === 其他實用工具 ===
 rsync
+fpart
+# fpart: 含 fpsync，細碎小檔案平行備份用
+sshfs
+# sshfs: fpsync 掛載遠端 NAS 用
 rclone
 jq
 fzf

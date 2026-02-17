@@ -6,7 +6,7 @@
 # 使用方式:
 #   ./nas_backup.sh test              測試連線（Ping、SSH、路徑）
 #   ./nas_backup.sh list [路徑]       列出遠端資料夾
-#   ./nas_backup.sh backup [--force] [--parallel]   執行單向備份
+#   ./nas_backup.sh backup [--force] [--parallel] [--fpsync]   執行單向備份
 #
 
 set -e
@@ -25,8 +25,9 @@ show_help() {
     echo "指令:"
     echo "  test              測試 NAS 連線（Ping、SSH、路徑存取）"
     echo "  list [路徑]       列出遠端資料夾（不指定則列出 NAS_BASE_PATH）"
-    echo "  backup [--force] [--parallel]  執行單向備份"
-    echo "      --force 略過空間檢查；--parallel 多路徑同時備份（細碎小檔案可加速）"
+    echo "  backup [--force] [--parallel] [--fpsync]  執行單向備份"
+    echo "      --force 略過空間檢查；--parallel 多路徑同時備份"
+    echo "      --fpsync 使用 fpsync 加速（無即時進度）；預設 rsync 有進度顯示"
     echo ""
     echo "範例:"
     echo "  $0 test"
@@ -35,6 +36,7 @@ show_help() {
     echo "  $0 backup"
     echo "  $0 backup --force"
     echo "  $0 backup --parallel"
+    echo "  $0 backup --fpsync"
 }
 
 # 載入設定並檢查必要變數
@@ -152,10 +154,12 @@ cmd_backup() {
 
     FORCE_MODE=false
     PARALLEL_MODE=false
+    FPSYNC_MODE=false
     while [[ $# -gt 0 ]]; do
         case "$1" in
             --force)    FORCE_MODE=true ;;
             --parallel) PARALLEL_MODE=true ;;
+            --fpsync)   FPSYNC_MODE=true ;;
         esac
         shift
     done
@@ -230,42 +234,94 @@ cmd_backup() {
     echo ""
 
     echo "[3/3] 開始備份${PARALLEL_MODE:+（平行模式）}..."
-    # --no-perms/owner/group: 外接硬碟(exFAT/NTFS)不支援 Unix 權限，避免 chgrp/chown 失敗
-    # --info=progress2 單行進度；--stats 結束時顯示統計
-    RSYNC_OPTS=(-az --update --no-perms --no-owner --no-group --info=progress2 --stats)
     BACKUP_START=$(date +%s)
-    RSYNC_ERRORS=0
+    BACKUP_ERRORS=0
 
-    do_rsync() {
+    # 預設 rsync（有即時進度）；--fpsync 時才用 fpsync（較快但無進度）
+    USE_FPSYNC=false
+    RSYNC_OPTS=(-az --update --no-perms --no-owner --no-group --info=progress2 --stats)
+    if [[ "$FPSYNC_MODE" == true ]]; then
+        HAS_FPSYNC=false
+        HAS_SSHFS=false
+        (command -v fpsync &>/dev/null || [[ -x /usr/bin/fpsync ]]) && HAS_FPSYNC=true
+        (command -v sshfs &>/dev/null || [[ -x /usr/bin/sshfs ]]) && HAS_SSHFS=true
+        if [[ "$HAS_FPSYNC" == true ]] && [[ "$HAS_SSHFS" == true ]]; then
+            USE_FPSYNC=true
+            FPSYNC_JOBS=4
+            FPSYNC_MOUNT_BASE="/tmp/fpsync_nas_$$"
+            mkdir -p "$FPSYNC_MOUNT_BASE"
+            trap 'cleanup_fpsync_mounts' EXIT
+            echo "  使用 fpsync 備份（無即時進度）"
+        else
+            [[ "$HAS_FPSYNC" != true ]] && echo "  (fpsync 未找到，改用 rsync)"
+            [[ "$HAS_SSHFS" != true ]] && echo "  (sshfs 未找到，改用 rsync)"
+        fi
+    fi
+
+    cleanup_fpsync_mounts() {
+        [[ -z "${FPSYNC_MOUNT_BASE:-}" ]] && return
+        for m in "$FPSYNC_MOUNT_BASE"/*/; do
+            [[ -d "$m" ]] && { umount "$m" 2>/dev/null || fusermount -u "$m" 2>/dev/null; } || true
+        done
+        rm -rf "$FPSYNC_MOUNT_BASE" 2>/dev/null || true
+    }
+
+    do_sync() {
         local rel_path="$1"
         local full_remote="${NAS_BASE}${rel_path}"
         local local_dest="$LOCAL_BACKUP_ROOT/$rel_path"
         mkdir -p "$local_dest"
-        rsync "${RSYNC_OPTS[@]}" -e "$RSYNC_SSH" \
-            "$NAS_USER@$NAS_HOST:$full_remote/" \
-            "$local_dest/" 2>&1
+
+        if [[ "$USE_FPSYNC" == true ]]; then
+            local mount_safe="${rel_path//\//_}"
+            local mount_pt="$FPSYNC_MOUNT_BASE/$mount_safe"
+            mkdir -p "$mount_pt"
+            # sshfs 掛載遠端
+            local sshfs_opts="-o reconnect,ServerAliveInterval=15,ServerAliveCountMax=3"
+            [[ -n "${SSH_KEY:-}" && -f "${SSH_KEY/\~/$HOME}" ]] && sshfs_opts="$sshfs_opts -o IdentityFile=${SSH_KEY/\~/$HOME}"
+            if ! sshfs "$NAS_USER@$NAS_HOST:$full_remote" "$mount_pt" $sshfs_opts 2>/dev/null; then
+                echo "  ⚠ 掛載失敗: $rel_path，改用 rsync"
+                rsync -az --update --no-perms --no-owner --no-group --info=progress2 --stats \
+                    -e "ssh $SSH_OPTS" "$NAS_USER@$NAS_HOST:$full_remote/" "$local_dest/" 2>&1
+                return $?
+            fi
+            # fpsync: -n 平行數 -f 每 job 檔案數 -s 每 job 大小 -o rsync 選項
+            # --no-perms/owner/group 避免外接硬碟權限錯誤；--update 略過較新檔案
+            local fpsync_ok=false
+            if fpsync -n "$FPSYNC_JOBS" -f 2000 -s $((2 * 1024 * 1024 * 1024)) \
+                -o "-q -lptgoD -z --update --no-perms --no-owner --no-group --stats" \
+                "$mount_pt/" "$local_dest/" 2>&1; then
+                fpsync_ok=true
+            fi
+            umount "$mount_pt" 2>/dev/null || fusermount -u "$mount_pt" 2>/dev/null || true
+            rmdir "$mount_pt" 2>/dev/null || true
+            $fpsync_ok
+        else
+            rsync "${RSYNC_OPTS[@]}" -e "$RSYNC_SSH" \
+                "$NAS_USER@$NAS_HOST:$full_remote/" "$local_dest/" 2>&1
+        fi
     }
 
     if [[ "$PARALLEL_MODE" == true ]] && [[ ${#PATHS[@]} -gt 1 ]]; then
         PIDS=()
         for rel_path in "${PATHS[@]}"; do
             echo ">>> 備份（背景）: $rel_path"
-            do_rsync "$rel_path" &
+            do_sync "$rel_path" &
             PIDS+=($!)
         done
         for i in "${!PIDS[@]}"; do
             if ! wait "${PIDS[$i]}"; then
                 echo "  ⚠ 錯誤: ${PATHS[$i]} 備份失敗"
-                ((RSYNC_ERRORS++)) || true
+                ((BACKUP_ERRORS++)) || true
             fi
         done
     else
         for rel_path in "${PATHS[@]}"; do
             echo ""
             echo ">>> 備份: $rel_path"
-            if ! do_rsync "$rel_path"; then
+            if ! do_sync "$rel_path"; then
                 echo "  ⚠ 錯誤: $rel_path 備份失敗"
-                ((RSYNC_ERRORS++)) || true
+                ((BACKUP_ERRORS++)) || true
             fi
         done
     fi
@@ -278,8 +334,8 @@ cmd_backup() {
     echo ""
     echo "=== 備份完成 ==="
     echo "  耗時: ${M} 分 ${S} 秒"
-    if [[ $RSYNC_ERRORS -gt 0 ]]; then
-        echo "  狀態: ⚠ $RSYNC_ERRORS 個路徑發生錯誤"
+    if [[ $BACKUP_ERRORS -gt 0 ]]; then
+        echo "  狀態: ⚠ $BACKUP_ERRORS 個路徑發生錯誤"
     else
         echo "  狀態: ✓ 全部成功"
     fi
