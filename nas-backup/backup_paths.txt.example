@@ -1,0 +1,14 @@
+# 要備份的遠端路徑列表
+# 複製此檔為 backup_paths.txt 並填入你要備份的資料夾
+# backup_paths.txt 已加入 .gitignore
+#
+# 每行一個路徑，相對於 NAS_BASE_PATH
+# 以 # 開頭為註解
+#
+# 範例（假設 NAS_BASE_PATH=/volume1）:
+# photos          -> 備份 /volume1/photos
+# documents       -> 備份 /volume1/documents
+# home/movies     -> 備份 /volume1/home/movies
+
+photos
+documents

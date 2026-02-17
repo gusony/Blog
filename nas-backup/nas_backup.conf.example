@@ -1,0 +1,20 @@
+# NAS 備份設定範例
+# 複製此檔為 nas_backup.conf 並填入你的實際設定
+# nas_backup.conf 已加入 .gitignore，不會被提交到 Git
+
+# === 遠端 NAS 連線 ===
+# Tailscale 主機名稱或 IP（例如: nas.local 或 100.x.x.x）
+NAS_HOST="your-nas-tailscale-name"
+
+# NAS SSH 登入帳號
+NAS_USER="admin"
+
+# NAS 上的基礎路徑（Synology 通常是 /volume1，QNAP 可能是 /share）
+NAS_BASE_PATH="/volume1"
+
+# 選填：SSH 私鑰路徑，用於免密碼登入
+# SSH_KEY="$HOME/.ssh/id_rsa"
+
+# === 本地備份目的地 ===
+# 外接硬碟的掛載點（例如 /media/username/BackupDrive）
+LOCAL_BACKUP_ROOT="/media/$(whoami)/YOUR_EXTERNAL_DRIVE/nas_backup"

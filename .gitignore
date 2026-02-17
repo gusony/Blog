@@ -1,3 +1,6 @@
 Icon*
 
-
+# NAS 備份個人設定（含連線資訊、備份路徑、通知憑證）
+nas-backup/nas_backup.conf
+nas-backup/backup_paths.txt
+nas-backup/backup_notify.env
