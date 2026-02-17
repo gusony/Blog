@@ -1,5 +1,25 @@
-#mv ssh_config ~/.ssh/config
-Host ab
-Hostname 220.134.82.68
+Host nas-local
+HostName 192.168.31.166
+Port 227
 User junhan
 
+Host nas-tailscale
+HostName 100.81.27.99
+Port 227
+User junhan
+
+Host cam
+HostName 192.168.0.103
+User junhan
+
+Host piclock
+HostName 192.168.31.69
+User junhan
+
+Host old
+HostName 192.168.0.119
+User junhan
+
+Host abeing
+HostName 192.168.0.104
+User jh

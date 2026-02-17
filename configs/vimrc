@@ -1,18 +1,13 @@
 "######## vim setting ###################################
 "colorscheme location : ~/.vim/colors/
 syntax enable "支援highlight
-colorscheme tequila-sunrise
-filetype plugin indent on
-if &term == "screen"
-    set t_Co=256
-endif
-
+"colorscheme tequila-sunrise
+ 
 set mouse=a                               "可以使用滑鼠 模式=auto
-set ttymouse=sgr
 set nu                                    "顯示行號
 set backspace=indent,eol,start            "backspace可以用刪除縮排,換行字元,允許使用ctrl+w和ctrl+u來刪除獨立詞語
-set completeopt=longest,menu
 set laststatus=2                          "開啟vim狀態列
+set t_Co=256                              "vim支援256色
 set ruler                                 "右下角顯示地行\列\文建位置%
 set expandtab                             "tab 轉換成 space
 set tabstop=4                             "tab 長度
@@ -21,14 +16,15 @@ set cursorline                            "顯示游標所在的列
 set smartcase                             "智慧大小寫搜尋
 set hlsearch                              "highlight 搜尋結果
 set cindent                               "智慧縮排
-set ic
+ 
+ 
 set foldmethod=syntax                     "程式碼摺疊
 set foldnestmax=6                         "程式碼摺疊層數
  
 "客製化狀態列
 set statusline=[%{expand('%:p')}][%{strlen(&fenc)?&fenc:&enc},\ %{&ff},\ %{strlen(&filetype)?&filetype:'plain'}]%{FileSize()}%{IsBinary()}%=%c,%l/%L\ [%3p%%]
 "打開vim自動執行
-autocmd VimEnter *.c,*.h  TrinityToggleAll
+"autocmd VimEnter * TrinityToggleAll
 "############# function ###################
 function IsBinary()
 if ( &binary == 0)
@@ -59,7 +55,6 @@ set tags=./tags,./TAGS,tags;~,TAGS;~ "告訴vim, tags在哪
 "####### cscope ##################################
 set cscopetag
 set csto=0
-set autochdir
  
 if filereadable("cscope.out")
   cs add cscope.out
@@ -76,25 +71,7 @@ nmap ze :cs find e <C-R>=expand("<cword>")<CR><CR>
 nmap zf :cs find f <C-R>=expand("<cfile>")<CR><CR>
 nmap zi :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
 nmap zd :cs find d <C-R>=expand("<cword>")<CR><CR>
-
-function! DelTagOfFile(file)
-    let fullpath = a:file
-    let cwd = getcwd()
-    let tagfilename = cwd . \"/tag"
-    let f = substitute(fullpath, cwd . "/", "", "")
-    let f = escape(f, './')
-    let cmd = 'sed -i "/' . f . '/d" "' . tagfilename . '"'
-    let resp = system(cmd)
-endfunction
-
-function! UpdateTags()
-    let f = expand("%:p")
-    let cwd = getcwd()
-    let tagfilename = cwd . "/tags"
-    let cmd = 'ctags -a -f ' . tagfilename . ' --c++finds=+p --fields=+iaS --extra=+q ' . '"' . f . '"'
-    call DelTagOfFile(f)
-    let resp = system(cmd)
-endfunction
+ 
  
 "######## taglist ########################################
 nmap <F8> :TlistToggle<CR><CR>
